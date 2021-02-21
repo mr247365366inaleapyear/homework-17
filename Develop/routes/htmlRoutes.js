@@ -1,10 +1,10 @@
-import { join } from "path";
+var path = require("path");
 
-export default function(app) {
-  app.get("/exercise", function(_req, res) {
-    res.sendFile(join(__dirname, "../public/exercise.html"));
+module.exports = function(app) {
+  app.get("/exercise", function(req, res) {
+    res.sendFile(path.join(__dirname, "../public/exercise.html"));
   });
-  app.get("/stats", function(_req, res) {
-    res.sendFile(join(__dirname, "../public/stats.html"));
+  app.get("/stats", function(req, res) {
+    res.sendFile(path.join(__dirname, "../public/stats.html"));
   });
 };

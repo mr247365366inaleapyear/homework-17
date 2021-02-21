@@ -1,19 +1,19 @@
-import express, { urlencoded, json, static } from "express";
-import logger from "morgan";
-import { connect } from "mongoose";
+const express = require("express");
+const logger = require("morgan");
+const mongoose = require("mongoose");
 
-const PORT = process.env.PORT || 8080;
+const PORT = process.env.PORT || 3000;
 
 const app = express();
 
 app.use(logger("dev"));
-app.use(urlencoded({ extended: true }));
-app.use(json());
-app.use(static("public"));
+app.use(express.urlencoded({ extended: true }));
+app.use(express.json());
+app.use(express.static("public"));
 
-connect(process.env.MONGODB_URI || "mongodb://localhost/workout", { useNewUrlParser: true });
+mongoose.connect(process.env.MONGODB_URI || "mongodb://localhost/workout", { useNewUrlParser: true });
 
-import db from "./models";
+const db = require("./models");
 
 require("./routes/apiRoutes")(app);
 require("./routes/htmlRoutes")(app);

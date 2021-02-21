@@ -1,6 +1,6 @@
-import { Schema as _Schema, model } from "mongoose";
+const mongoose = require("mongoose");
 
-const Schema = _Schema;
+const Schema = mongoose.Schema;
 
 const workoutSchema = new Schema(
   {
@@ -52,6 +52,6 @@ workoutSchema.virtual("totalDuration").get(function () {
   }, 0);
 });
 
-const Workout = model("Workout", workoutSchema);
+const Workout = mongoose.model("Workout", workoutSchema);
 
-export default Workout;
+module.exports = Workout;
