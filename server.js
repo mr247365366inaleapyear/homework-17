@@ -6,6 +6,8 @@ const PORT = process.env.PORT || 3000;
 
 const app = express();
 
+const uri = 'mongodb+srv://YourUsername:<yourPassword>@cluster1.qcpvo.mongodb.net/Students?retryWrites=true&w=majority'; TO const uri = process.env.MONGO_DB_URI || 'mongodb+srv://Ulan:123@cluster1.qcpvo.mongodb.net/Students?retryWrites=true&w=majority';
+
 app.use(logger("dev"));
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
